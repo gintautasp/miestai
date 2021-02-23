@@ -41,12 +41,46 @@
 				
 			} catch( Exception e ) {
 				
+				e.printStackTrace( System.out );
+				
 			}
 		}
 		
-		public String lentele()  {
+		public Integer papildyti ( String[] lent_lauk_reiksmes ) {
 			
-			String lent = "";
+			String sql_ins = "";
+			String str_lauk = "";
+			String comma = "";
+			
+			for ( int i = 0; i < lent_lauk.length; i++ ) {
+			
+				str_lauk = str_lauk + comma + "`" + lent_lauk [ i ] + "`";
+				sql_ins =  sql_ins + comma  + "'" + lent_lauk_reiksmes [ i ] + "'";
+				comma = ",";																													// sql_ins = sql_ins + "'" + Miestai.value + "'";
+			}
+			
+			sql_ins = 
+				"INSERT INTO `" + lent + "`"
+				+ " ( " + str_lauk + " )"
+				+ " VALUES ( "			
+				+ sql_ins
+				+ " )";
+
+			System.out.println ( sql_ins );
+			
+			try {
+
+				statement_change = connection.createStatement();
+				resultSetChange = statement_change.executeUpdate(sql_ins);			
+				
+			} catch ( Exception e ) {
+				
+				e.printStackTrace( System.out );
+			}
+			return resultSetChange;
+		}
+		
+		public String lentele()  {
 			
 			try {
 			
@@ -72,6 +106,7 @@
 				
 			} catch( Exception e ) {
 				
+				e.printStackTrace( System.out );
 			}				
 			return lent;
 		}

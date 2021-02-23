@@ -52,38 +52,16 @@
 	} catch(Exception e) {}
 
 	try { 
-	/*
-		connection = DriverManager.getConnection ( connectionUrl + dbName + "?useUnicode=yes&characterEncoding=UTF-8", userId, password );
 		String add; 
 		
-		if ( ( ( add = request.getParameter("add")  ) != null ) && add.equals ( "papildyti" ) ) {
-																																					// Miestai miestas = new Miestai ( lent_miestu );
-																																					// miestas.takeFromParams ( request );
+		if ( ( ( add = request.getParameter("add")  ) != null ) && add.equals ( "papildyti" ) ) {																																					// Miestai miestas = new Miestai ( lent_miestu );
+																																			// miestas.takeFromParams ( request );
 			for ( int i = 0; i<lent_miestu.length; i++ ) {
 			
 				lauk_miesto [ i ] = request.getParameter ( lent_miestu [ i ] );
 			}
 
-			String sql_ins = "";
-			String comma = "";
-			
-			for ( int i = 0; i < lent_miestu.length; i++ ) {
-			
-				sql_ins =  sql_ins + comma  + "'" + lauk_miesto [ i ] + "'";
-				comma = ",";																													// sql_ins = sql_ins + "'" + Miestai.value + "'";
-			}
-			
-			sql_ins = 
-				"INSERT INTO `miestai`"
-				+ " ( `pav`, `skaicius_gyv`, `plotas`, `platuma`, `ilguma`, `kodas_salies` )"
-				+ " VALUES ( "			
-				+ sql_ins
-				+ " )";
-
-			out.println ( sql_ins );
-
-			statement_change = connection.createStatement();
-			resultSetChange = statement_change.executeUpdate(sql_ins);			
+			miestai_crud.papildyti ( lauk_miesto );
 			
 		 } else {
 		 
@@ -92,8 +70,6 @@
 				out.println ( add );
 			}
 		 } 
-		
-		*/
 
 	} catch ( Exception e ) {
 	
